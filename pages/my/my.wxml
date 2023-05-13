@@ -1,0 +1,156 @@
+<!--pages/my/my.wxml-->
+<cu-custom bgColor="bg-gradual-green" isBack="{{false}}">
+  <view slot="content">个人中心</view>
+</cu-custom>
+<!-- 背景图 -->
+<view class="top-backgroup">
+  <image src='http://localhost:8000/static/img/summer.jpg' mode='widthFix' class='backgroud-image'></image>
+</view>
+
+<!-- 波浪动画 -->
+<view class="tnwave waveAnimation">
+  <view class="waveWrapperInner bgTop">
+    <view class="wave waveTop" style="background-image: url('http://localhost:8000/static/img/wave-2.png')"></view>
+  </view>
+  <view class="waveWrapperInner bgMiddle">
+    <view class="wave waveMiddle" style="background-image: url('http://localhost:8000/static/img/wave-2.png')"></view>
+  </view>
+  <view class="waveWrapperInner bgBottom">
+    <view class="wave waveBottom" style="background-image: url('http://localhost:8000/static/img/wave-1.png')"></view>
+  </view>
+</view>
+
+<!-- 头像用户信息 -->
+<view class="about__wrap">
+  <view class="user-info__container tn-flex tn-flex-direction-column tn-flex-col-center tn-flex-row-center">
+    <view class="user-info__avatar tn-bg-grey--light tn-flex tn-flex-col-center tn-flex-row-center" bindtap="showDrawer" data-target="DrawerModalL">
+      <view class="tn-shadow-blur" style="background-image:url('http://localhost:8000/static/img/avatar_2.jpeg'); width: 170rpx; height: 170rpx; background-size: cover;"></view>
+    </view>
+    <view class="user-info__nick-name">{{userinfo.name}}</view>
+  </view>
+</view>
+
+<!-- 侧边抽屉 -->
+<view class="cu-modal drawer-modal justify-start {{modelName=='DrawerModalL'?'show':''}}" bindtap="hideDrawer">
+  <view class="cu-dialog basis-df" catchtap style="top:{{CustomBar}}px;height:calc(100vh - {{CustomBar}}px)">
+    <view class="cu-list menu text-left">
+      <view class="cu-item arrow">
+        <view class="content">
+          <view>更换头像</view>
+        </view>
+      </view>
+      <view class="cu-item arrow">
+        <view class="content">
+          <view bindtap="modifyInfo">修改信息</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+      
+
+      
+<!-- 学院&年级&专业 -->
+<view class="tn-shadow-warp" style="margin-top: 150rpx;background-color: rgba(255,255,255,1);">
+  <view class="tn-flex">
+    <view class="tn-flex-1 tn-padding-sm tn-margin-xs">
+      <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
+        <view>
+          <view class="tn-text-xxl tn-color-orange">学院</view>
+        </view>
+        <view class="tn-margin-top-xs tn-color-gray tn-text-df tn-text-center">
+          <text class="tn-icon-home"></text>
+          <text class="tn-padding-left-xs">{{userInfo.institute}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="tn-flex-1 tn-padding-sm tn-margin-xs">
+      <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
+        <view class="">
+          <view class="tn-text-xxl tn-color-blue">年级</view>
+        </view>
+        <view class="tn-margin-top-xs tn-color-gray tn-text-df tn-text-center">
+          <text class="tn-icon-my-circle"></text>
+          <text class="tn-padding-left-xs">{{userInfo.grade}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="tn-flex-1 tn-padding-sm tn-margin-xs">
+      <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">
+        <view class="">
+          <view class="tn-text-xxl tn-color-red">专业</view>
+        </view>
+        <view class="tn-margin-top-xs tn-color-gray tn-text-df tn-text-center">
+          <text class="tn-icon-education"></text>
+          <text class="tn-padding-left-xs">{{userInfo.profession}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<!-- 普通信息: 学号，电话，班级 -->
+<view class="about-shadow tn-margin-top-xl tn-padding-top-sm tn-padding-bottom-sm tn-margin-left tn-margin-right">
+  <tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30">
+    <view class="tn-flex tn-flex-col-center">
+      <view class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-cool-bg-color-5 tn-color-white" > 
+        <view class="tn-icon-identity"></view>
+      </view>
+      <view class="tn-margin-left-sm tn-flex-1">学号</view>
+      <view class="tn-margin-left-sm tn-color-cyan">{{userInfo.username}}</view>
+    </view>
+  </tn-list-cell>
+  <tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30">
+    <view class="tn-flex tn-flex-col-center">
+      <view class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-cool-bg-color-6 tn-color-white"> 
+        <view class="tn-icon-phone-fill"></view>
+      </view>
+      <view class="tn-margin-left-sm tn-flex-1">电话</view>
+      <view class="tn-margin-left-sm tn-color-orangered tn-text-sm tn-padding-left-xs tn-padding-right-xs tn-bg-orange--disabled tn-round">{{userInfo.phone}}</view>
+    </view>
+  </tn-list-cell>
+  <tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30">
+    <view class="tn-flex tn-flex-col-center">
+      <view class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-cool-bg-color-16 tn-color-white"> 
+        <view class="tn-icon-team"></view>
+      </view>
+      <view class="tn-margin-left-sm tn-flex-1">班级</view>
+      <view class="tn-margin-left-sm tn-color-red">{{cuInfo.class}}</view>
+    </view>
+  </tn-list-cell>
+</view>
+
+<!-- 个人信息 -->
+<view class="about-shadow tn-margin-top-xl tn-padding-top-sm tn-padding-bottom-sm tn-margin-left tn-margin-right">
+  <tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30">
+    <view class="tn-flex tn-flex-col-center">
+      <view class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-cool-bg-color-5 tn-color-white" > 
+        <view class="tn-icon-pillow"></view>
+      </view>
+      <view class="tn-margin-left-sm tn-flex-1">宿舍</view>
+      <view class="tn-margin-left-sm tn-color-blue">{{dormPicker[dormIndex]}}栋{{cuInfo.dormnum}}</view>
+    </view>
+  </tn-list-cell>
+  <tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30">
+    <view class="tn-flex tn-flex-col-center">
+      <view class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-cool-bg-color-6 tn-color-white"> 
+        <view class="tn-icon-refund"></view>
+      </view>
+      <view class="tn-margin-left-sm tn-flex-1">一卡通余额</view>
+      <view class="tn-margin-left-sm tn-color-orangered tn-text-sm tn-padding-left-xs tn-padding-right-xs tn-bg-green--disabled tn-round">{{cuInfo.account}}</view>
+    </view>
+  </tn-list-cell>
+</view>
+
+<!-- 退出登录 -->
+<view class="about-shadow tn-margin-top-xl tn-padding-top-sm tn-padding-bottom-sm tn-margin-left tn-margin-right">
+  <tn-list-cell :hover="true" :unlined="true" :radius="true" :fontSize="30">
+    <view class="tn-flex tn-flex-col-center">
+      <view class="icon1__item--icon tn-flex tn-flex-row-center tn-flex-col-center tn-cool-bg-color-2 tn-color-white"> 
+        <view class="tn-icon-logout"></view>
+      </view>
+      <view class="tn-margin-left-sm tn-flex-1" bindtap="logout">注销/切换账号</view>
+    </view>
+  </tn-list-cell>
+</view>

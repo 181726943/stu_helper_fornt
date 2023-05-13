@@ -1,0 +1,26 @@
+/* homepackages/books/books.wxss */
+
+page{
+  padding-top: 105rpx;
+}
+
+.search-bar{
+  height: 80rpx;
+}
+.gradelist{
+  margin-top: 80rpx;
+}
+
+.search-group {
+	background-color: var(--white);
+  padding: 1rpx 30rpx;
+  margin: 0rpx 20rpx;
+	display: flex;
+	align-items: center;
+	min-height: 100rpx;
+	justify-content: space-between;
+}
+.dateselect{
+  padding: 0rpx 10rpx;
+  margin-right: 20rpx;
+}

@@ -1,0 +1,36 @@
+<!--pages/home/home.wxml-->
+<view class="home">
+  <cu-custom bgColor="bg-gradual-pink" isBack="{{false}}">
+    <view slot="content">校园助手</view>
+  </cu-custom>
+  <!-- <swiper class="swiper-image 'square-dot' " indicator-dots="true" circular="true" interval="5000" duration="500">
+    <swiper-item wx:for="{{swiperList}}" wx:key="id">
+      <image src="{{item.url}}" mode="aspectFill"></image>
+    </swiper-item>
+  </swiper> -->
+  <view class="top-background">
+    <image src='http://localhost:8000/static/img/basic_new.jpg' mode="aspectFill" class="backgroud-image"></image>
+  </view>
+
+  <view class="tc">
+    <view class="tc-title">今天/{{weekday}}</view>
+    <view class="tc-content">内容</view>
+  </view>
+
+
+  <!-- <view class="grid-list bg-gradual-pink padding radius text-center shadow-blur">
+    <navigator class="grid-item" wx:for="{{gridimage}}" wx:key="index" url="{{item.target}}">
+      <image src="{{item.src}}"></image>
+      <text>{{item.name}}</text>
+    </navigator>
+  </view> -->
+  <scroll-view scroll-y class="scrollPage">
+    <view class='nav-list'>
+      <navigator open-type="navigate" hover-class='none' url="/homepackages/{{item.name}}/{{item.name}}" class="nav-li bg-{{item.color}}" wx:for="{{navlist}}" wx:key="index">
+        <view class="nav-title">{{item.title}}</view>
+        <view class="nav-name">{{item.name}}</view>
+        <text class='tn-icon-{{item.icon}}'></text>
+      </navigator>
+    </view>
+  </scroll-view>
+</view>

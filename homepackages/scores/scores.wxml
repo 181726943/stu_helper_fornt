@@ -1,0 +1,33 @@
+<!--homepackages/scores/scores.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">成绩查询</view>
+</cu-custom>
+<scroll-view scroll-x="false" class="cu-bar bg-white nav text-center fixed flex-wrap" style="top:{{CustomBar}}px">
+  <view class="search-bar">
+    <picker class="cu-item cu-form-group" mode="multiSelector" bindchange="valueChange" value="{{selectIndex}}"
+    range="{{selectArray}}">
+      <view class="picker">
+        {{selectArray[0][selectIndex[0]]}}-{{selectArray[1][selectIndex[1]]}}
+      </view>
+    </picker>
+    <button class="cu-btn round bg-olive shadow" bindtap="tosearch" style="width: auto;">查询</button>
+  </view>
+  <view class="padding bg-white" style="height: 80rpx;">
+    <view class="flex">
+      <view class="basis-sm margin-lr-xs padding-lr-xs radius">课程名称</view>
+      <view class="basis-xs margin-lr-xs padding-lr-xs radius">成绩</view>
+      <view class="basis-xs margin-lr-xs padding-lr-xs radius">绩点</view>
+      <view class="basis-xs margin-lr-xs padding-lr-xs radius">学分</view>
+    </view>
+  </view>
+</scroll-view>
+<view class="gradelist padding bg-white">
+  <view class="flex" wx:for="{{gradelist}}" wx:key="index">
+    <view class="basis-sm margin-xs padding-sm radius">{{item.cname}}</view>
+    <view class="basis-xs margin-xs padding-sm radius">{{item.scores}}</view>
+    <view class="basis-xs margin-xs padding-sm radius">{{item.gpa}}</view>
+    <view class="basis-xs margin-xs padding-sm radius">{{item.credit}}</view>
+  </view>
+</view>
+

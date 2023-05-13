@@ -1,0 +1,150 @@
+/* pages/my/my.wxss */
+@import "/static/css/main.wxss";
+@import "/static/css/color.wxss";
+@import "/static/css/iconfont.wxss";
+/* 顶部背景图 start */
+.top-backgroup {
+  height: 450rpx;
+  z-index: -1;
+}
+.top-backgroup .backgroud-image {
+  width: 100%;
+  height: 450rpx;
+}
+/* 顶部背景图 end */
+
+/* 波浪动画 start */
+@keyframes move_wave {
+  0% {
+      transform: translateX(0) translateZ(0) scaleY(1)
+  }
+  50% {
+      transform: translateX(-25%) translateZ(0) scaleY(1)
+  }
+  100% {
+      transform: translateX(-50%) translateZ(0) scaleY(1)
+  }
+}
+.tnwave {
+  overflow: hidden;
+  position: absolute;
+  z-index: 1000;
+  height: 200rpx;
+  left: 0;
+  right: 0;
+  top: 420rpx;
+  bottom: auto;
+}
+.waveWrapperInner {
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  height: 100%;
+}
+.wave {
+  position: absolute;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background-repeat: repeat no-repeat;
+  background-position: 0 bottom;
+  transform-origin: center bottom;
+}
+.bgTop {
+  opacity: 0.4;
+}
+.waveTop {
+  background-size: 50% 45px;
+}
+.waveAnimation .waveTop {
+animation: move_wave 4s linear infinite;
+}
+
+.bgMiddle {
+  opacity: 0.6;
+}
+.waveMiddle {
+  background-size: 50% 40px;
+}
+.waveAnimation .waveMiddle {
+  animation: move_wave 3.5s linear infinite;
+}
+
+.bgBottom {
+  opacity: 0.95;
+}
+.waveBottom {
+  background-size: 50% 35px;
+}
+.waveAnimation .waveBottom {
+  animation: move_wave 2s linear infinite;
+}
+/* 波浪动画 end */
+
+/* 页面 start*/
+.about-shadow{
+  border-radius: 15rpx;
+  box-shadow: 0rpx 0rpx 50rpx 0rpx rgba(0, 0, 0, 0.07);
+}
+.about__wrap {
+  position: relative;
+  z-index: 1;
+  /* margin: 20rpx 30rpx; */
+  margin-top: -330rpx;
+}
+
+/* 用户头像 start */
+.user-info__avatar {
+  width: 170rpx;
+  height: 170rpx;
+  border: 8rpx solid rgba(255,255,255,0.05);
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0rpx 0rpx 80rpx 0rpx rgba(0, 0, 0, 0.15);
+}
+  
+.user-info__nick-name {
+  margin-top: 26rpx;
+  font-size: 36rpx;
+  font-weight: 600;
+  text-align: center;
+}
+/* 用户信息 end */
+
+.icon1__item {
+  /* // width: 30%; */
+  background-color: #FFFFFF;
+  border-radius: 10rpx;
+  padding: 30rpx;
+  margin: 20rpx 10rpx;
+  transform: scale(1);
+  transition: transform 0.3s linear;
+  transform-origin: center center;
+}
+        
+.icon1__item .icon1__item--icon {
+  width: 40rpx;
+  height: 40rpx;
+  font-size: 28rpx;
+  border-radius: 50%;
+  position: relative;
+  z-index: 1;
+}
+      
+.icon1__item .icon1__item--icon::after {
+  content: " ";
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  border-radius: inherit;
+  opacity: 1;
+  transform: scale(1, 1);
+  background-size: 100% 100%;
+  background-image: url(http://localhost:8000/static/img/icon_bg.png);
+}
+/* 图标容器1 end */
+
+

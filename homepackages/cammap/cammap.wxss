@@ -1,0 +1,20 @@
+/* homepackages/cammap/cammap.wxss */
+.map_container{
+	height: 1200rpx;
+	width: 100%;
+}
+
+.map {
+	height: 100%;
+	width: 100%;
+}
+
+
+.cu-tab {
+  position: flex;
+}
+
+.cu-nav {
+  position: absolute;
+  bottom: 0;
+}

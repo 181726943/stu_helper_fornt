@@ -1,0 +1,32 @@
+<!--homepackages/books/books.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">图书借阅信息</view>
+</cu-custom>
+<scroll-view scroll-x="false" class="cu-bar bg-white nav text-center fixed" style="top:{{CustomBar}}px">
+  <view class="search-bar search-group">
+    <picker class="dateselect" mode="date" start="{{grade}}-09-01" end="{{grade+4}}-06-30" bindchange="startChange" >
+      <view class="picker">{{todaydate}}</view>
+    </picker>
+    <picker mode="date" start="{{grade}}-09-01" end="{{grade+4}}-06-30" bindchange="endChange">
+      <view class="picker">{{todaydate}}</view>
+    </picker>
+    <button class="cu-btn round line-yellow shadow" bindtap="tosearch" style="width: auto;">查询</button>
+  </view>
+  <view class="padding bg-white" style="height: 80rpx;">
+    <view class="flex">
+      <view class="basis-sm margin-lr-xs padding-lr-xs radius">图书名称</view>
+      <view class="basis-xs margin-lr-xs padding-lr-xs radius">借书时间</view>
+      <view class="basis-xs margin-lr-xs padding-lr-xs radius">还书时间</view>
+      <view class="basis-xs margin-lr-xs padding-lr-xs radius">借阅类型</view>
+    </view>
+  </view>
+</scroll-view>
+<view class="gradelist padding bg-white">
+  <view class="flex" wx:for="{{booklist}}" wx:key="index">
+    <view class="basis-sm margin-xs padding-sm radius">{{item.bookname}}</view>
+    <view class="basis-xs margin-xs padding-sm radius">{{item.borrow_date}}</view>
+    <view class="basis-xs margin-xs padding-sm radius">{{item.return_date}}</view>
+    <view class="basis-xs margin-xs padding-sm radius">{{item.read_type}}</view>
+  </view>
+</view>

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom",
+    "tn-list-cell": "/components/tn-list-cell/tn-list-cell"
+  }
+}

@@ -1,0 +1,25 @@
+<view class="rainbow-bg">
+ <!-- v2父容器  子view使用绝对布局 -->
+   <view class="v2">
+     <view class="dltext">登录</view>
+  
+     <!-- 手机号 -->
+     <view class="phoneCs">
+       <image src="/image/account.png" class="ph"></image>
+       <input class="userinput" placeholder="学号/工号" placeholder-style="color: #ffffff" bindblur="getusername"/>
+     </view>
+  
+     <!-- 密码 -->
+     <view class="passwordCs">
+       <image src="/image/password.png" class="ps"></image>
+       <input class="pwdinput" password="{{ passwordType }}" placeholder="密码" placeholder-style="color: #ffffff" bindblur="getpassword"/>
+       <image src='{{showpwdType ? "../../image/showpwd2.png" : "../../image/hidepwd2.png"}}' class="eye" bindtap='showorhide'></image>
+     </view>
+  
+     <!-- 登录按钮 -->
+     <view class="denglu">
+       <button class="btn-dl" type="primary" bindtap="btnlogin">登 录</button>
+     </view>
+   </view>
+ </view>
+  

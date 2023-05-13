@@ -1,0 +1,50 @@
+<!--modifyinfo/information/information.wxml-->
+<cu-custom bgColor="bg-gradual-green" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">修改个人信息</view>
+</cu-custom>
+
+<!-- 头像用户信息 -->
+<view class="about__wrap">
+  <view class="user-info__container tn-flex tn-flex-direction-column tn-flex-col-center tn-flex-row-center">
+    <view class="user-info__avatar tn-bg-grey--light tn-flex tn-flex-col-center tn-flex-row-center">
+      <view class="tn-shadow-blur" style="background-image:url('http://localhost:8000/static/img/avatar_2.jpeg'); width: 170rpx; height: 170rpx; background-size: cover;"></view>
+    </view>
+  </view>
+</view>
+
+
+<!-- 修改信息 -->
+<form>
+  <view class="cu-form-group">
+		<view class="title">学号</view>
+		<input value="{{userInfo.username}}" readonly></input>
+	</view>
+	<view class="cu-form-group margin-top">
+		<view class="title">邮箱</view>
+		<input id="email" placeholder="请输入邮箱" value="{{userInfo.email}}" bindblur="getInput"></input>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">手机号</view>
+		<input id="phone" type="number" placeholder="请输入手机号" value="{{userInfo.phone}}" bindblur="getInput"></input>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">班级</view>
+		<input id="class" placeholder="请输入班级" value="{{cuInfo.class}}" bindblur="getInput"></input>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">宿舍</view>
+    <picker style="flex: 1;" mode="selector" bindchange="ValueChange" value="{{dormIndex}}" range="{{dormPicker}}">
+      <view class="picker">{{dormPicker[dormIndex]}}栋</view>
+    </picker>
+    <input id="dormnum" type="number" value="{{cuInfo.dormnum}}" bindblur="getInput"></input>
+	</view>
+	<view class="cu-form-group">
+		<view class="title">余额</view>
+		<input id="account" type="digit" placeholder="一卡通余额" value="{{cuInfo.account}}" bindblur="getInput"></input>
+	</view>
+  <view class="cu-form-group margin-top justify-around">
+    <button class="cu-btn bg-red" bindtap="Cancle">取消</button>
+    <button class="cu-btn bg-green" bindtap="Save">保存</button>
+  </view>
+</form>

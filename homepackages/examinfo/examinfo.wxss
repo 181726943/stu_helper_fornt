@@ -1,0 +1,39 @@
+/* homepackages/examinfo/examinfo.wxss */
+@import "/colorui/main.wxss";
+@import "/colorui/animation.wxss";
+
+/* 搜索组 start */
+.search-bar{
+  height: 120rpx;
+
+}
+.in-search{
+  height: 60rpx;
+  margin: 10rpx 10rpx;
+  border: 1rpx solid silver;
+  border-radius: 10rpx;
+}
+
+.btn-search {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+  box-sizing: border-box;
+  border: 0rpx;
+  padding: 0 20rpx;
+  margin-top: 5rpx;
+	font-size: 28rpx;
+	height: 50rpx;
+	line-height: 1;
+	text-align: center;
+	text-decoration: none;
+	overflow: visible;
+	margin-left: initial;
+	transform: translate(0rpx, 0rpx);
+	margin-right: initial;
+}
+/* 搜索组 end */
+.gradelist{
+  margin-top: 80rpx;
+}

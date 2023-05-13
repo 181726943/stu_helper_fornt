@@ -1,0 +1,28 @@
+/* modifyinfo/information/information.wxss */
+@import "/static/css/main.wxss";
+@import "/colorui/main.wxss";
+@import "/colorui/animation.wxss";
+
+/* 头像 start */
+.about__wrap {
+  position: relative;
+  z-index: 1;
+  /* margin: 20rpx 30rpx; */
+  margin-top: 30rpx;
+}
+
+.user-info__avatar {
+  width: 170rpx;
+  height: 170rpx;
+  border: 8rpx solid rgba(255,255,255,0.05);
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0rpx 0rpx 80rpx 0rpx rgba(0, 0, 0, 0.15);
+}
+/* 头像 end */
+
+/* 修改表单 start */
+.cu-form-group .title {
+  min-width: calc(4em + 30rpx);
+}
+/* 修改表单 end */

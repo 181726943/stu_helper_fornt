@@ -1,0 +1,10 @@
+/* homepackages/schoolcal/schoolcal.wxss */
+@import "/colorui/main.wxss";
+
+.img-container{
+  width: 100vw;
+  height: calc(100vh-150rpx);
+}
+.img-container image{
+  height: 100%;
+}

@@ -1,0 +1,15 @@
+/* homepackages/courses/courses.wxss */
+
+@import "/colorui/main.wxss";
+@import "/colorui/animation.wxss";
+
+page{
+  padding-top: 90rpx;
+}
+.search-bar{
+  height: 80rpx;
+}
+
+.gradelist{
+  margin-top: 1rpx;
+}

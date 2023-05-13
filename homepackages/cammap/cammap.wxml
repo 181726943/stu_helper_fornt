@@ -1,0 +1,27 @@
+<!--homepackages/cammap/cammap.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">校园地图</view>
+</cu-custom>
+
+<view class="map_container">
+  <map 
+    class="map"
+    id="map"
+    longitude="{{longitude}}"
+    latitude="{{latitude}}"
+    scale="14"
+    enable-rotate="true"
+    enable-3D="true"
+    show-location="true"
+    markers="{{markers}}"
+    bindmarkertap="makertap"
+    ></map>
+</view>
+<scroll-view scroll-x class="cu-nav bg-white nav">
+  <view class="flex text-center">
+    <view class="cu-item flex-sub {{index==TabCur?'text-blue cur':''}}" wx:for="{{tabList}}" wx:key="index" bindtap="tabSelect" data-id="{{index}}">
+      {{item}}
+    </view>
+  </view>
+</scroll-view>

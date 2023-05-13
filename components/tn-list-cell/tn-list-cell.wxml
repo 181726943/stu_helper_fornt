@@ -1,0 +1,3 @@
+<view class="tn-list-cell-class tn-list-cell {{ backgroundColorClass }} {{ fontColorClass }} {{ cellClass }}" hover-class="{{ hover ? 'tn-hover' : '' }}" hover-stay-time="150" style="{{ cellStyle }}" bindtap="handleClick">
+  <slot></slot>
+</view>

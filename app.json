@@ -1,0 +1,88 @@
+{
+  "useExtendedLib": {
+  },
+  "entryPagePath": "pages/login/login",
+  "pages": [
+    "pages/home/home",
+    "pages/login/login",
+    "pages/my/my",
+    "components/tn-list-cell/tn-list-cell"
+  ],
+  "subPackages": [
+    {
+      "root": "homepackages",
+      "name": "subhome",
+      "pages": [
+        "timetable/timetable",
+        "examinfo/examinfo",
+        "scores/scores",
+        "books/books",
+        "classroom/classroom",
+        "courses/courses",
+        "schoolcal/schoolcal",
+        "camphone/camphone",
+        "cammap/cammap",
+        "libs/js"
+      ]
+    },
+    {
+      "root": "modifyinfo",
+      "name": "modify",
+      "pages": [
+        "information/information"
+      ]
+    }
+  ],
+  "preloadRule": {
+    "pages/home/home": {
+      "network": "all",
+      "packages": ["subhome"]
+    },
+    "pages/my/my":{
+      "network": "all",
+      "packages": ["modify"]
+    }
+  },
+  "requiredPrivateInfos": [
+    "getLocation",
+    "onLocationChange",
+    "startLocationUpdateBackground",
+    "chooseAddress"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "阁下请留步"
+    }
+  },
+  "usingComponents": {},
+
+  "lazyCodeLoading": "requiredComponents",
+  "window": {
+    "navigationStyle": "custom",
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#5cadff",
+    "navigationBarTitleText": "校园助手",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#efefef"
+  },
+  "tabBar": {
+    "backgroundColor": "#ffffff",
+    "color": "#000000",
+    "selectedColor": "#1afa29",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "image/home.png",
+        "selectedIconPath": "image/home-selected.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "image/my.png",
+        "selectedIconPath": "image/my-selected.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

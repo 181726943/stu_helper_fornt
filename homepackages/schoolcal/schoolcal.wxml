@@ -1,0 +1,18 @@
+<!--homepackages/schoolcal/schoolcal.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">校历</view>
+</cu-custom>
+
+<!-- <scroll-view scroll-x="false" class="cu-bar bg-white nav text-center fixed flex-wrap" style="top:{{CustomBar}}px"> -->
+  <view class="padding flex flex-wrap justify-around align-center bg-white">
+    <button hover-class="none" class="cu-btn round {{selected ? 'bg-blue' :' lines-blue'}}" bindtap="choose1" style="width: auto;">2022-2023</button>
+    <button hover-class="none" class="cu-btn round {{!selected ? 'bg-blue' : 'lines-blue'}}" bindtap="choose2" style="width: auto;">2023-2024</button>
+  </view>
+<!-- </scroll-view> -->
+
+<view class="img-container flex justify-center">
+  <image src="{{imgurl}}" lazy-load="true" mode="widthFix"></image>
+</view>
+
+

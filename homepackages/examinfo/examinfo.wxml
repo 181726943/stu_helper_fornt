@@ -1,0 +1,28 @@
+<!--homepackages/examinfo/examinfo.wxml-->
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">考试安排</view>
+</cu-custom>
+
+<scroll-view scroll-x="false" class="cu-bar bg-white nav text-center fixed flex-wrap" style="top:{{CustomBar}}px">
+  <view class="search-bar">
+    <input class="in-search" bindblur="searchData" value="{{cname}}" confirm-type="search" placeholder="课程名称"/>
+    <button class="cu-btn round lines-blue" bindtap="tosearch" style="width: auto;">查询</button>
+  </view>
+  <view class="padding bg-white" style="height: 80rpx;">
+    <view class="flex">
+      <view class="flex-sub margin-lr-xs padding-lr-xs radius">课程名称</view>
+      <view class="flex-sub margin-lr-xs padding-lr-xs radius">考试地点</view>
+      <view class="flex-sub margin-lr-xs padding-lr-xs radius">考试日期</view>
+      <view class="flex-sub margin-lr-xs padding-lr-xs radius">考试时间</view>
+    </view>
+  </view>
+</scroll-view>
+<view class="gradelist padding bg-white">
+  <view class="flex" wx:for="{{examarr}}" wx:key="index">
+    <view class="basis-sm margin-xs padding-sm radius">{{item.cname}}</view>
+    <view class="basis-xs margin-xs padding-sm radius">{{item.addr}}</view>
+    <view class="basis-xs margin-xs padding-sm radius">{{item.exam_date}}</view>
+    <view class="basis-xs margin-xs padding-sm radius">{{item.exam_time}}</view>
+  </view>
+</view>
