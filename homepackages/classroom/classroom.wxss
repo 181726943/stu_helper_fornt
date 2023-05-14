@@ -1,1 +1,7 @@
 /* homepackages/classroom/classroom.wxss */
+@import '/colorui/main.wxss';
+
+.cu-form-group .title {
+  font-size: 28rpx;
+  min-width: calc(4em + 30rpx);
+}

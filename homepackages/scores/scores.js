@@ -13,6 +13,68 @@ Page({
     year: '',
     term: ''
   },
+
+  /**
+   * 获得多列选择器中学年选择列表
+  */
+ getyearlist(){
+  // 根据全局变量获得用户年级，用年级来生成选择列表
+  var year = Object.assign({}, app.globalData.userinfo).grade;
+  var temp = [];
+  var tempyear = ['全部'];
+  var tempterm = ['全部', '1', '2'];
+  for (var i = 0; i < 4; i++){
+    var newyear = year + "-" + (year + 1);
+    tempyear.push(newyear);
+    year += 1;
+  }
+  temp.push(tempyear);
+  temp.push(tempterm);
+  this.setData({
+    selectArray: temp,
+  })
+},
+
+/** 
+ * 多列选择器处理函数
+ */
+valueChange(e){
+  var tempyear = '';
+  var tempterm = '';
+  var index = e.detail.value;
+  tempyear = index[0] === 0 ? '' : this.data.selectArray[0][index[0]].match(/\d+/)[0];
+  tempterm = index[1] === 0 ? '' : parseInt(this.data.selectArray[1][index[1]]);
+  this.setData({
+    selectIndex: e.detail.value,
+    year: tempyear,
+    term: tempterm,
+  });
+  // console.log(this.data.year);
+  // console.log(this.data.term);
+},
+
+/**
+ * 查询操作
+*/
+tosearch(){
+  wx.request({
+    url: 'http://127.0.0.1:8000/main/grade/my_score',
+    method: 'GET',
+    data: {
+      year: this.data.year,
+      term: this.data.term
+    },
+    header: {
+      "Authorization": wx.getStorageSync('userkey')
+    },
+    success: res => {
+      // console.log(res.data)
+      this.setData({
+        gradelist: res.data,
+      });
+    }
+  })
+},
   
   /**
    * 生命周期函数--监听页面加载
@@ -68,67 +130,5 @@ Page({
    */
   onShareAppMessage() {
 
-  },
-
-  /**
-   * 获得多列选择器中学年选择列表
-  */
-  getyearlist(){
-    // 根据全局变量获得用户年级，用年级来生成选择列表
-    var year = Object.assign({}, app.globalData.userinfo).grade;
-    var temp = [];
-    var tempyear = ['全部'];
-    var tempterm = ['全部', '1', '2'];
-    for (var i = 0; i < 4; i++){
-      var newyear = year + "-" + (year + 1);
-      tempyear.push(newyear);
-      year += 1;
-    }
-    temp.push(tempyear);
-    temp.push(tempterm);
-    this.setData({
-      selectArray: temp,
-    })
-  },
-
-  /** 
-   * 多列选择器处理函数
-   */
-  valueChange(e){
-    var tempyear = '';
-    var tempterm = '';
-    var index = e.detail.value;
-    tempyear = index[0] === 0 ? '' : this.data.selectArray[0][index[0]].match(/\d+/)[0];
-    tempterm = index[1] === 0 ? '' : parseInt(this.data.selectArray[1][index[1]]);
-    this.setData({
-      selectIndex: e.detail.value,
-      year: tempyear,
-      term: tempterm,
-    });
-    // console.log(this.data.year);
-    // console.log(this.data.term);
-  },
-
-  /**
-   * 查询操作
-  */
-  tosearch(){
-    wx.request({
-      url: 'http://127.0.0.1:8000/main/grade/my_score',
-      method: 'GET',
-      data: {
-        year: this.data.year,
-        term: this.data.term
-      },
-      header: {
-        "Authorization": wx.getStorageSync('userkey')
-      },
-      success: res => {
-        // console.log(res.data)
-        this.setData({
-          gradelist: res.data,
-        });
-      }
-    })
   },
 })

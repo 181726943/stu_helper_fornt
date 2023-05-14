@@ -3,3 +3,58 @@
   <view slot="backText">返回</view>
   <view slot="content">空教室查询</view>
 </cu-custom>
+
+<view class="bg-white fixed flex-direction" style="top:{{CustomBar}}px">
+  <view class="cu-form-group justify-between">
+    <view class="text cuIcon-title text-blue"></view>学年-学期
+    <picker mode="multiSelector" bindchange="ytChange" value="{{ytIndex}}"
+    range="{{ytArray}}">
+      <view class="picker">
+        {{ytArray[0][ytIndex[0]]}}--{{ytArray[1][ytIndex[1]]}}
+      </view>
+    </picker>
+  </view>
+  <view class="cu-form-group judtify-between">
+    <view class="text cuIcon-title text-blue"></view>周数
+    <picker mode="selector" bindchange="weekChange"  value="{{weekIndex}}" range="{{weeekArray}}" range-key="weekname">
+			<view class="picker">
+				{{buildIndex ? buildArray[buildIndex].buildname : '请选择周数'}}
+			</view>
+		</picker>
+    <view class="text cuIcon-title text-blue"></view>周次
+    <picker mode="selector" bindchange="dayChange"  value="{{dayIndex}}" range="{{dayArray}}">
+			<view class="picker">
+				{{buildIndex ? buildArray[buildIndex].buildname : '请选择周次'}}
+			</view>
+		</picker>
+  </view>
+  <view class="cu-form-group justify-between">
+    <view class="text cuIcon-title text-blue"></view>使用课节
+    <picker mode="multiSelector" bindchange="classValue" bindcolumnchange="classColumn" value="{{classIndex}}"
+    range="{{classArray}}">
+      <view class="picker">
+        {{classArray[0][classIndex[0]]}}-{{classArray[1][classIndex[1]]}}
+      </view>
+    </picker>
+    <view class="text cuIcon-title text-blue"></view>教学楼
+    <picker mode="selector" bindchange="buildChange"  value="{{buildIndex}}" range="{{buildArray}}" range-key="buildname">
+			<view class="picker">
+				{{buildIndex ? buildArray[buildIndex].buildname : '请选择教学楼'}}
+			</view>
+		</picker>
+  </view>
+  <view class="cu-form-group justify-center">
+    <button class="cu-btn round bg-olive shadow" bindtap="toSearch">查询</button>
+  </view>
+  <view class="flex padding-xs bg-white text-center" style="height: 70rpx; width: 100%;">
+    <view class="flex-sub margin-lr-xs padding-lr-xs radius">教学楼</view>
+    <view class="flex-sub margin-lr-xs padding-lr-xs radius">教室编号</view>
+  </view>
+</view>
+
+<view class="gradelist padding bg-white">
+  <view class="flex text-center" wx:for="{{roomList}}" wx:key="index">
+    <view class="flex-sub margin-xs padding-sm radius">{{item.build}}</view>
+    <view class="flex-sub margin-xs padding-sm radius">{{item.number}}</view>
+  </view>
+</view>
