@@ -3,3 +3,30 @@
   <view slot="backText">返回</view>
   <view slot="content">校园通讯</view>
 </cu-custom>
+<view class="flex phone-container">
+  <view class="flex-sub title bg-white text-center fixed flex-wrap">
+    <view class="padding-tb-sm bg-white align-center">
+      <view class="flex-direction align-center">
+        <view class="cu-item margin-tb-xs padding-tb radius text-lg {{index==TabCur?'text-green cur':''}}" wx:for="{{list}}" wx:key="index" bindtap="tabSelect" data-id="{{index}}">
+          {{item}}
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="flex-treble num-container">
+    <view class="padding-top padding-lr">
+      <view class='cu-bar solid-bottom bg-white'>
+          <view class='action'>
+            <text class='cuIcon-title text-blue'></text>{{list[TabCur]}} 
+          </view>
+        </view>
+      <view class="cu-list menu-avatar">
+        <view class="flex cu-item justify-between" wx:for="{{phone[TabCur]}}" wx:key="index">
+          <view class="flex-sub text-center text-grey">{{item.name}}</view>
+          <view class="flex-sub text-black">{{item.value}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
