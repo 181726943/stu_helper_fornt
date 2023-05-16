@@ -29,7 +29,7 @@
   width: 45%;
   margin: 0 2.5% 40rpx;
   background-image: url(http://localhost:8000/static/img/icon_bg6.png);
-  background-size: cover;
+  background-size: contain;
   background-position: center;
   position: relative;
   z-index: 1;

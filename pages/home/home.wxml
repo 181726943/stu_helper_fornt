@@ -9,12 +9,12 @@
     </swiper-item>
   </swiper> -->
   <view class="top-background">
-    <image src='http://localhost:8000/static/img/basic_new.jpg' mode="aspectFill" class="backgroud-image"></image>
+    <image src='http://localhost:8000/static/img/basic_new.jpg' mode="widthFix" class="backgroud-image"></image>
   </view>
 
   <view class="tc">
-    <view class="tc-title">今天/{{weekday}}</view>
-    <view class="tc-content">内容</view>
+    <view class="text-white margin-left-sm">今天/{{weekday}}</view>
+    <view class="flex align-end justify-center text-white text-lg">内容</view>
   </view>
 
 

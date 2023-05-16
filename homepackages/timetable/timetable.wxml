@@ -1,6 +1,81 @@
 <!--homepackages/timetable/timetable.wxml-->
 <cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
   <view slot="backText">返回</view>
-  <view slot="content">课程表</view>
+  <view slot="content">课程表(第{{weekIndex}}周)</view>
 </cu-custom>
+
+<view class="bg-blue">
+  <!-- 课程表表头 -->
+  <view style="top: 0; z-index: 99;" class="bg-white shadow">
+    <!-- 星期部分 -->
+    <view class="flex text-sm blue-1">
+      <view style="width: 10.4vw;" class="flex justify-center align-center">{{month}}</view>
+      <view style="width: 89.6vw; height: 35rpx;" class="flex">
+        <view wx:for="{{title}}" wx:key="index" class="flex justify-center align-center flex-sub {{index == nowDay-1 ? 'bg-gray orange-1' : ''}}">
+          周{{item}}
+        </view>
+      </view>
+    </view>
+    <!-- 星期下方日期 -->
+    <view class="flex text-sm blue-1">
+    <view style="width: 10.4vw;" class="flex justify-center align-center">月</view>
+    <view style="width: 89.6vw; height: 35rpx;" class="flex">
+      <view wx:for="{{dateArray}}" wx:key="index" class="flex justify-center align-center flex-sub {{index == nowDay-1 ? 'bg-gray orange-1' : ''}}">
+        {{item}}日
+      </view>
+    </view>
+    </view>
+  </view>
+  <!-- 课程表主体 -->
+  <scroll-view scroll-y="true" style="width: 100vw; {{marginHeight()}}">
+    <view style="background-image: url('{{bacimg}}'); background-size: contain; width: 100vw;" class="padding-top-xs padding-bottom-sm flex course-bg {{bacimg ? '' : 'bg-blue light'}}">
+      <!-- 课程左侧时间 -->
+      <view class="text-sm text-blue">
+        <view wx:for="{{ctime}}" wx:key="index" class="flex flex-direction justify-center align-center" style="height: 120rpx; width: 10.4vw;">
+          <view>{{index+1}}</view>
+          <view class="text-grey">{{item.s}}</view>
+          <view class="text-grey">{{item.e}}</view>
+        </view>
+      </view>
+      <!-- 课程水平分割线 -->
+      <view wx:for="{{ctime.length}}" wx:key="index">
+        <view style="width: 89.6vw; position: absolute; border-bottom: 1rpx solid lightgray; z-index: 0; margin-top: {{(index+1)*120}}rpx;">
+        </view>
+      </view>
+      <!-- 课程位置区域 -->
+      <!-- 从后端获取的总课程列表 -->
+      <view wx:for="{{courseList}}" wx:key="index">
+        <view wx:for="{{item.weeks}}" wx:for-item="weekitem" wx:for-index="weekindex" wx:key="weekindex">
+          <!-- 周数 -->
+          <view wx:if="{{weekitem === weekIndex}}">
+            <!-- bindtap点击查看详细情况 -->
+            <view class="table-item radius" bindtap="showDetail" data-id="{{index}}" style="margin-left: {{(item.weekday-1)*12.8+0.4}}vw; margin-right: 0.4vw; margin-top: {{(item.start_class-1)*120+5}}rpx; height: {{item.c_duration*120-5}}rpx; background-color: {{item.bg}}; width: 12vw; z-index: 9;">
+              <!-- 课程名称及地点 -->
+              <view class="text-white padding-xs text-xs">
+                <view class="flex" style="line-height: 24rpx; max-height: 150rpx; overflow: hidden;">
+                  {{item.cname}}
+                </view>
+                <view>{{item.addr}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+
+<!-- 点击课程显示详细信息 -->
+<view class="cu-modal {{detailmodal ? 'show' : ''}}" bindtap='hideDetail'>
+  <view class="cu-dialog" catchtap>
+    <view class="cu-bar bg-gradual-orange text-center">
+      <view class="content">{{couInfo.cname}}</view>
+    </view>
+    <view class="padding-sm text-left">{{couInfo.addr}}</view>
+    <view class="padding-sm text-left">{{couInfo.teacher}}</view>
+    <view class="padding-sm text-left">{{dayweek}}</view>
+    <view class="padding-sm text-left">{{couInfo.start_class}}节-{{couInfo.end_class}}节</view>
+    <view class="padding-sm text-left">{{couInfo.start_week}}周-{{couInfo.end_week}}周</view>
+  </view>
+</view>
 

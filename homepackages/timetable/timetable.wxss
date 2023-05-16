@@ -1,1 +1,26 @@
 /* homepackages/timetable/timetable.wxss */
+
+@import '/colorui/main.wxss';
+@import '/colorui/icon.wxss';
+
+.course-bg {
+  background-size: cover;
+  background-position: center center;
+}
+
+.table-item{
+  position: absolute;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.lines-orange-1,
+.orange-1 {
+  color: #ff907d;
+}
+
+.lines-blue-1,
+.blue-1 {
+  color: #1798d9;
+}
