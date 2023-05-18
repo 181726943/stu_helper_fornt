@@ -1,5 +1,6 @@
 // modifyinfo/information/information.js
 const app = getApp();
+const config = require('../../config.js');
 Page({
 
   /**
@@ -10,7 +11,8 @@ Page({
     userInfo: {},   //系统保存的用户信息
     cuInfo: {}, //用户自定义信息
     dormPicker: ['A', 'B', 'C', 'D', 'E', '4', '5', '6'],
-    dormIndex: 2
+    dormIndex: 2,
+    staticUrl: config.staticUrl,
   },
 
   /**
@@ -68,7 +70,7 @@ Page({
     // 后端同步
     app.getCsrfToken(token => {
       wx.request({
-        url: 'http://127.0.0.1:8000/main/user/' + this.data.userInfo.id + '/',
+        url: config.baseUrl + 'user/' + this.data.userInfo.id + '/',
         method: 'PUT',
         data: {
           "email": this.data.userInfo.email,

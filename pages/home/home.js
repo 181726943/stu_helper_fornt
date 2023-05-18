@@ -1,14 +1,13 @@
 // pages/home/home.js
+const config = require('../../config.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    staticUrl: config.staticUrl,
     weekday: "",
-    // swiperList: [
-    //   {id:0, type: "image", url: "http://localhost:8000/static/img/basic_new.jpg"},
-    // ],
     navlist: [
       {
         icon: "calendar-fill",

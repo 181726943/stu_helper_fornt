@@ -1,5 +1,6 @@
 // homepackages/examinfo/examinfo.js
 const app = getApp();
+const config = require('../../config.js');
 Page({
 
   /**
@@ -27,7 +28,7 @@ Page({
    */
   tosearch(){
     wx.request({
-      url: 'http://127.0.0.1:8000/main/exam/myexam',
+      url: config.baseUrl + 'exam/myexam',
       method: "GET",
       data: {
         cname: this.data.cname,

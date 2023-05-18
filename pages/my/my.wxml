@@ -4,19 +4,19 @@
 </cu-custom>
 <!-- 背景图 -->
 <view class="top-backgroup">
-  <image src='http://localhost:8000/static/img/summer.jpg' mode='widthFix' class='backgroud-image'></image>
+  <image src='{{staticUrl}}img/summer.jpg' mode='widthFix' class='backgroud-image'></image>
 </view>
 
 <!-- 波浪动画 -->
 <view class="tnwave waveAnimation">
   <view class="waveWrapperInner bgTop">
-    <view class="wave waveTop" style="background-image: url('http://localhost:8000/static/img/wave-2.png')"></view>
+    <view class="wave waveTop" style="background-image: url('{{staticUrl}}img/wave-2.png')"></view>
   </view>
   <view class="waveWrapperInner bgMiddle">
-    <view class="wave waveMiddle" style="background-image: url('http://localhost:8000/static/img/wave-2.png')"></view>
+    <view class="wave waveMiddle" style="background-image: url('{{staticUrl}}img/wave-2.png')"></view>
   </view>
   <view class="waveWrapperInner bgBottom">
-    <view class="wave waveBottom" style="background-image: url('http://localhost:8000/static/img/wave-1.png')"></view>
+    <view class="wave waveBottom" style="background-image: url('{{staticUrl}}img/wave-1.png')"></view>
   </view>
 </view>
 
@@ -24,24 +24,29 @@
 <view class="about__wrap">
   <view class="user-info__container tn-flex tn-flex-direction-column tn-flex-col-center tn-flex-row-center">
     <view class="user-info__avatar tn-bg-grey--light tn-flex tn-flex-col-center tn-flex-row-center" bindtap="showDrawer" data-target="DrawerModalL">
-      <view class="tn-shadow-blur" style="background-image:url('http://localhost:8000/static/img/avatar_2.jpeg'); width: 170rpx; height: 170rpx; background-size: cover;"></view>
+      <view class="tn-shadow-blur" style="background-image:url('{{staticUrl}}img/swu-logo_1.jfif'); width: 170rpx; height: 170rpx; background-size: cover;"></view>
     </view>
-    <view class="user-info__nick-name">{{userinfo.name}}</view>
+    <view class="user-info__nick-name">{{userInfo.name}}</view>
   </view>
 </view>
 
 <!-- 侧边抽屉 -->
 <view class="cu-modal drawer-modal justify-start {{modelName=='DrawerModalL'?'show':''}}" bindtap="hideDrawer">
-  <view class="cu-dialog basis-df" catchtap style="top:{{CustomBar}}px;height:calc(100vh - {{CustomBar}}px)">
+  <view class="cu-dialog basis-df" catchtap="holdDrawer" style="top:{{CustomBar}}px;height:calc(100vh - {{CustomBar}}px)">
     <view class="cu-list menu text-left">
       <view class="cu-item arrow">
         <view class="content">
-          <view>更换头像</view>
+          <view bindtap="changeAvatar">更换头像</view>
         </view>
       </view>
       <view class="cu-item arrow">
         <view class="content">
-          <view bindtap="modifyInfo">修改信息</view>
+          <view bindtap="modifyInfo">变更信息</view>
+        </view>
+      </view>
+      <view class="cu-item arrow">
+        <view class="content">
+          <view bindtap="changePwd">修改密码</view>
         </view>
       </view>
     </view>
@@ -51,7 +56,7 @@
 
       
 <!-- 学院&年级&专业 -->
-<view class="tn-shadow-warp" style="margin-top: 150rpx;background-color: rgba(255,255,255,1);">
+<view class="tn-shadow-warp" style="margin-top: 137rpx;background-color: rgba(255,255,255,1);">
   <view class="tn-flex">
     <view class="tn-flex-1 tn-padding-sm tn-margin-xs">
       <view class="tn-flex tn-flex-direction-column tn-flex-row-center tn-flex-col-center">

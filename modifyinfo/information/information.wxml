@@ -8,7 +8,7 @@
 <view class="about__wrap">
   <view class="user-info__container tn-flex tn-flex-direction-column tn-flex-col-center tn-flex-row-center">
     <view class="user-info__avatar tn-bg-grey--light tn-flex tn-flex-col-center tn-flex-row-center">
-      <view class="tn-shadow-blur" style="background-image:url('http://localhost:8000/static/img/avatar_2.jpeg'); width: 170rpx; height: 170rpx; background-size: cover;"></view>
+      <view class="tn-shadow-blur" style="background-image:url('{{staticUrl}}img/avatar_2.jpeg'); width: 170rpx; height: 170rpx; background-size: cover;"></view>
     </view>
   </view>
 </view>

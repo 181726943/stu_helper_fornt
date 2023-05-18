@@ -1,5 +1,6 @@
 // homepackages/scores/scores.js
 const app = getApp();
+const config = require('../../config.js');
 Page({
 
   /**
@@ -58,7 +59,7 @@ valueChange(e){
 */
 tosearch(){
   wx.request({
-    url: 'http://127.0.0.1:8000/main/grade/my_score',
+    url: config.baseUrl + 'grade/my_score',
     method: 'GET',
     data: {
       year: this.data.year,

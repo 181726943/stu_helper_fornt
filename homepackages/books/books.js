@@ -4,6 +4,7 @@ const today = new Date();
 const year = today.getFullYear();
 const month = today.getMonth() + 1;
 const day = today.getDate();
+const config = require('../../config.js');
 Page({
 
   /**
@@ -40,7 +41,7 @@ Page({
 
   tosearch(){
     wx.request({
-      url: 'http://127.0.0.1:8000/main/bookinfo/readinfo',
+      url: config.baseUrl + 'bookinfo/readinfo',
       method: 'GET',
       data:{
         begin_date: this.data.begindate,

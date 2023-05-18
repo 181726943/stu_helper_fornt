@@ -1,17 +1,20 @@
 <!--homepackages/timetable/timetable.wxml-->
-<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}">
+<cu-custom bgColor="bg-gradual-blue" isBack="{{true}}" bindweek="showSelect">
   <view slot="backText">返回</view>
-  <view slot="content">课程表(第{{weekIndex}}周)</view>
+  <view slot="content">
+    第{{weekIndex}}周
+    <text class="cuIcon-{{weekModal ? 'unfold' : 'fold'}}"></text>
+  </view>
 </cu-custom>
 
-<view class="bg-blue">
+<view class="bg-white">
   <!-- 课程表表头 -->
   <view style="top: 0; z-index: 99;" class="bg-white shadow">
     <!-- 星期部分 -->
     <view class="flex text-sm blue-1">
       <view style="width: 10.4vw;" class="flex justify-center align-center">{{month}}</view>
       <view style="width: 89.6vw; height: 35rpx;" class="flex">
-        <view wx:for="{{title}}" wx:key="index" class="flex justify-center align-center flex-sub {{index == nowDay-1 ? 'bg-gray orange-1' : ''}}">
+        <view wx:for="{{title}}" wx:key="index" class="flex justify-center align-center flex-sub {{dateArray[index] == nowDate ? 'bg-gray orange-1' : ''}}">
           周{{item}}
         </view>
       </view>
@@ -20,7 +23,7 @@
     <view class="flex text-sm blue-1">
     <view style="width: 10.4vw;" class="flex justify-center align-center">月</view>
     <view style="width: 89.6vw; height: 35rpx;" class="flex">
-      <view wx:for="{{dateArray}}" wx:key="index" class="flex justify-center align-center flex-sub {{index == nowDay-1 ? 'bg-gray orange-1' : ''}}">
+      <view wx:for="{{dateArray}}" wx:key="index" class="flex justify-center align-center flex-sub {{dateArray[index] == nowDate ? 'bg-gray orange-1' : ''}}">
         {{item}}日
       </view>
     </view>
@@ -47,9 +50,9 @@
       <view wx:for="{{courseList}}" wx:key="index">
         <view wx:for="{{item.weeks}}" wx:for-item="weekitem" wx:for-index="weekindex" wx:key="weekindex">
           <!-- 周数 -->
-          <view wx:if="{{weekitem === weekIndex}}">
+          <view wx:if="{{weekitem == weekIndex}}">
             <!-- bindtap点击查看详细情况 -->
-            <view class="table-item radius" bindtap="showDetail" data-id="{{index}}" style="margin-left: {{(item.weekday-1)*12.8+0.4}}vw; margin-right: 0.4vw; margin-top: {{(item.start_class-1)*120+5}}rpx; height: {{item.c_duration*120-5}}rpx; background-color: {{item.bg}}; width: 12vw; z-index: 9;">
+            <view class="table-item bg-{{item.bg}} radius" bindtap="showDetail" data-id="{{index}}" style="margin-left: {{(item.weekday-1)*12.8+0.4}}vw; margin-right: 0.4vw; margin-top: {{(item.start_class-1)*120+5}}rpx; height: {{(item.c_duration+1)*120-5}}rpx; width: 12vw; z-index: 9;">
               <!-- 课程名称及地点 -->
               <view class="text-white padding-xs text-xs">
                 <view class="flex" style="line-height: 24rpx; max-height: 150rpx; overflow: hidden;">
@@ -67,7 +70,7 @@
 
 <!-- 点击课程显示详细信息 -->
 <view class="cu-modal {{detailmodal ? 'show' : ''}}" bindtap='hideDetail'>
-  <view class="cu-dialog" catchtap>
+  <view class="cu-dialog" catchtap="holdModal">
     <view class="cu-bar bg-gradual-orange text-center">
       <view class="content">{{couInfo.cname}}</view>
     </view>
@@ -79,3 +82,13 @@
   </view>
 </view>
 
+<!-- 点击最上方课程表切换周 -->
+<view class="cu-modal top-modal {{weekModal ? 'show' : ''}}" bindtap="hideSelect">
+  <view class="cu-dialog" catchtap="holdModal">
+    <view class="grid col-5 text-center justify-center">
+      <view class="margin-xs padding-xs radius" wx:for="{{19}}" wx:key="index" bindtap="getWeek" data-id="{{index}}">
+        第{{index+1}}周
+        </view>
+    </view>
+  </view>
+</view>

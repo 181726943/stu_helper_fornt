@@ -1,4 +1,5 @@
 // app.js
+const config = require('./config');
 App({
   onLaunch() {
     /**
@@ -7,8 +8,13 @@ App({
      */
     // const token = wx.getStorageSync('userkey');
     // if (!token) {
-    //   wx.navigateTo({
+    //   wx.reLaunch({
     //     url: 'pages/login/login',
+    //   })
+    // }
+    // else {
+    //   wx.reLaunch({
+    //     url: 'pages/home/home',
     //   })
     // }
 
@@ -31,7 +37,7 @@ App({
 
   getCsrfToken(callback) {
     wx.request({
-      url: 'http://127.0.0.1:8000/main/getCsrftoken/',
+      url: config.baseUrl + 'getCsrftoken/',
       method: 'GET',
       success: res => {
         const csrfToken = res.data.csrftoken;

@@ -1,0 +1,33 @@
+<!--modifyinfo/repsetpwd/resetpwd.wxml-->
+<cu-custom bgColor="bg-gradual-green" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">修改密码</view>
+</cu-custom>
+
+<view class="solids-bottom padding-xs flex align-center">
+  <view class="flex-sub text-left">
+    <view class="text-sl padding">
+      <text class="text-black">设置新密码</text>
+    </view>
+  </view>
+</view>
+
+<view class="margin-lr">
+  <view class="cu-form-group bg-gray solid-bottom margin-top-lg">
+		<view class="title">新密码</view>
+		<input placeholder="请设置新密码" bindblur="newPwd" password='true'></input>
+	</view>
+	<view class="cu-form-group bg-gray solid-bottom margin-top">
+		<view class="title">确认密码</view>
+		<input placeholder="请再次输入新密码" bindblur="ackPwd" password='true'></input>
+  </view>
+  <view class="margin-top text-red" wx:if="{{warning == 'same'}}">
+    <text class="tn-icon-warning-fill padding-xs"></text>两次输入密码不一致
+  </view>
+  <view class="flex justify-center margin-top-xl">
+    <button class="cu-btn flex-sub justify-center lg bg-blue" bindtap="Confirm">确定</button>
+  </view>
+  <view class="flex justify-start margin-top-xs">
+    <text class="text-sm text-gray">安全提示：新密码请勿与旧密码过于相似</text>
+  </view>
+</view>

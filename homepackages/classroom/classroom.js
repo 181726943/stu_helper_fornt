@@ -1,5 +1,6 @@
 // homepackages/classroom/classroom.js
 const app = getApp();
+const config = require('../../config.js');
 Page({
 
   /**
@@ -10,7 +11,7 @@ Page({
     gradelist: [],
     ytArray: [],
     ytIndex: [0,0],
-    weeekArray: [
+    weekArray: [
       {weekname: '第一周', value: 1}, {weekname: '第二周', value: 2}, {weekname: '第三周', value: 3},
       {weekname: '第四周', value: 4}, {weekname: '第五周', value: 5}, {weekname: '第六周', value: 6},
       {weekname: '第七周', value: 7}, {weekname: '第八周', value: 8}, {weekname: '第九周', value: 9},
@@ -161,12 +162,12 @@ Page({
     let begin = this.data.classArray[0][this.data.classIndex[0]];
     let end = this.data.classArray[1][this.data.classIndex[1]];
     let weekday = this.data.dayIndex;
-    let weeks = this.data.weeekArray[this.data.weekIndex].value;
+    let weeks = this.data.weekArray[this.data.weekIndex].value;
     let build = this.data.buildArray[this.data.buildIndex].value;
     
     // 查询请求
     wx.request({
-      url: 'http://127.0.0.1:8000/main/select/roomsearch/',
+      url: config.baseUrl + 'classroom/roomsearch/',
       method: "GET",
       data:{
         year: year,
@@ -178,10 +179,11 @@ Page({
         build: build,
       },
       header: {
-        "Authorization": wx.getStorageSync('userkey'),
-        // "Authorization": 'Token b4a8498aa6ceac075ad7200d19545b59f5d22391'
+        // "Authorization": wx.getStorageSync('userkey'),
+        "Authorization": 'Token 1dd176b8accf9f56aca4e209f3b40b2d99e03ecb'
       },
       success: res => {
+        console.log(res);
         if(res.statusCode == 200){
           this.setData({
             roomList: res.data,

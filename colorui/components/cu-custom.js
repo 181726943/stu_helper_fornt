@@ -48,7 +48,10 @@ Component({
     toHome(){
       wx.reLaunch({
         url: '/pages/home/home',
-      })
+      });
+    },
+    showSelect() {
+      this.triggerEvent('week', {});
     }
   }
 })

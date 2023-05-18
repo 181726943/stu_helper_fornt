@@ -1,5 +1,6 @@
 // pages/my/my.js
 const app = getApp();
+const config = require('../../config.js');
 Page({
 
   /**
@@ -11,20 +12,46 @@ Page({
     cuInfo: {},
     dormPicker: ['A', 'B', 'C', 'D', 'E', '4', '5', '6'],
     dormIndex: 2,
+    staticUrl: config.staticUrl,
 
   },
 
+  /**
+   * 展示侧边栏
+   * @param {*} e 
+   */
   showDrawer(e){
     this.setData({
       modelName: e.currentTarget.dataset.target,
     })
   },
+
+  /**
+   * 消除警告信息
+   */
+  holdDrawer(){
+    return ;
+  },
+
   hideDrawer(){
     this.setData({
       modelName: null,
     })
   },
 
+  /**
+   * 修改密码
+   */
+  changePwd(){
+    wx.navigateTo({
+      url: '/modifyinfo/changepwd/changepwd',
+    });
+    this.hideDrawer();
+  },
+
+  /**
+   * 修改信息
+   */
   modifyInfo(){
     wx.navigateTo({
       url: '/modifyinfo/information/information',
@@ -32,18 +59,30 @@ Page({
     this.hideDrawer();
   },
 
+  /**
+   * 退出登录
+   */
   logout(){
+    app.getCsrfToken(token => {
+      wx.request({
+        url: config.baseUrl + 'auth/logout/',
+        method: 'POST',
+        header: {
+          "X-CSRFToken": token,
+        }
+      });
+    });
     app.globalData.userinfo = null;
     wx.clearStorage();
-    wx.reLaunch({
-      url: '/pages/login/login',
-    });
     wx.showModal({
       title: '注销/切换账号',
       content: '当前帐号已退出登录,请重新登录',
       showCancel: false,
       confirmColor: "#8dc63f",
-    })
+    });
+    wx.reLaunch({
+      url: '/pages/login/login?info=logout',
+    });
   },
 
   /**

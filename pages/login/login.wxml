@@ -1,25 +1,26 @@
 <view class="rainbow-bg">
  <!-- v2父容器  子view使用绝对布局 -->
-   <view class="v2">
-     <view class="dltext">登录</view>
+  <view class="basis-xl flex v2 justify-center">
+     <view class="dltext justify-center text-center">登录</view>
   
      <!-- 手机号 -->
      <view class="phoneCs">
-       <image src="/image/account.png" class="ph"></image>
-       <input class="userinput" placeholder="学号/工号" placeholder-style="color: #ffffff" bindblur="getusername"/>
+       <view class="flex tn-icon-phone text-white text-xxl margin-sm"></view>
+       <input class="userinput margin-tb-sm padding-tb-xs align-center text-df" placeholder="学号/工号" placeholder-style="color: #ffffff" bindblur="getusername"/>
      </view>
   
      <!-- 密码 -->
      <view class="passwordCs">
-       <image src="/image/password.png" class="ps"></image>
-       <input class="pwdinput" password="{{ passwordType }}" placeholder="密码" placeholder-style="color: #ffffff" bindblur="getpassword"/>
-       <image src='{{showpwdType ? "../../image/showpwd2.png" : "../../image/hidepwd2.png"}}' class="eye" bindtap='showorhide'></image>
+       <!-- <image src="/image/password.png" class="ps"></image> -->
+       <view class="tn-icon-lock text-white text-xxl margin-sm"></view>
+       <input class="margin-tb-sm padding-tb-xs text-df" password="{{ passwordType }}" placeholder="密码" placeholder-style="color: #ffffff" bindblur="getpassword"/>
+       <view class="text-white align-center text-xxl tn-icon-{{showpwdType ? 'eye' : 'eye-hide'}} margin-tb-sm" bindtap='showorhide'></view>
      </view>
   
      <!-- 登录按钮 -->
-     <view class="denglu">
-       <button class="btn-dl" type="primary" bindtap="btnlogin">登 录</button>
+     <view class="denglu flex justify-center text-center margin">
+       <button class="cu-btn justify-center bg-green lg" type="primary" bindtap="btnlogin">登 录</button>
      </view>
-   </view>
+  </view>
  </view>
   

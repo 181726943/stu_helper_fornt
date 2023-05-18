@@ -1,3 +1,5 @@
+const config = require("../../config");
+
 // homepackages/schoolcal/schoolcal.js
 const app = getApp();
 Page({
@@ -7,10 +9,10 @@ Page({
    */
   data: {
     CustomBar: app.globalData.CustomBar,   //导航栏下方固定栏
-    imageurl1: "http://localhost:8000/static/img/2022-2023.png",
-    imageurl2: "http://localhost:8000/static/img/2023-2024.png",
+    imageurl1: config.staticUrl + "img/2022-2023.png",
+    imageurl2: config.staticUrl + "img/2023-2024.png",
     selected: true,
-    imgurl: "http://localhost:8000/static/img/2022-2023.png",
+    imgurl: config.staticUrl + "img/2022-2023.png",
 
   },
 

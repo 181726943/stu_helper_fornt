@@ -1,5 +1,6 @@
 // pages/login/login.js
 const app = getApp();
+const config = require('../../config.js');
 Page({
 
   /**
@@ -44,8 +45,8 @@ Page({
   },
 
  btnlogin() {
-    this.getusername;
-    this.getpassword;
+    this.getusername();
+    this.getpassword();
     let user = wx.getStorageSync('username');
     if (!this.data.username || !this.data.password){
       wx.showToast({
@@ -65,7 +66,7 @@ Page({
        * 用于登录post方式必须有csrftoken
       */
       wx.request({
-        url: 'http://127.0.0.1:8000/main/getCsrftoken/',
+        url: config.baseUrl + 'getCsrftoken/',
         method: 'GET',
         //获取成功，将token加入请求头发送登录请求
         success: res => {
@@ -78,7 +79,7 @@ Page({
            * 第二个请求post方式登录
           */
           wx.request({
-            url: 'http://127.0.0.1:8000/main/auth/login/',
+            url: config.baseUrl + 'auth/login/',
             method: 'POST',
             data: {
               "username": this.data.username,
@@ -113,7 +114,7 @@ Page({
                  * 若登陆成功，则loginres.data.key的值就是key值
                  */
                 wx.request({
-                  url: 'http://127.0.0.1:8000/main/auth/user/',
+                  url: config.baseUrl + 'auth/user/',
                   method: 'GET',
                   header:{
                     "Authorization":'Token ' + userkey,
@@ -124,7 +125,7 @@ Page({
                      * 第四个请求，get方式获取当前登录用户信息
                      */
                     wx.request({
-                      url: 'http://127.0.0.1:8000/main/user/'+userinfo.data.pk+'/',
+                      url: config.baseUrl + 'user/'+userinfo.data.pk+'/',
                       method: "GET",
                       header:{
                         "Authorization":'Token ' + userkey,

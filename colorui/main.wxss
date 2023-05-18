@@ -1653,7 +1653,7 @@ button.icon.lg {
 	font-size: 32rpx;
 	line-height: 60rpx;
 	cursor: none;
-	pointer-events: none;
+	pointer-events: auto;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	overflow: hidden;
@@ -2372,7 +2372,8 @@ button.icon.lg {
 	padding-right: 30rpx;
 	font-size: 30rpx;
 	position: relative;
-	height: 60rpx;
+  height: 60rpx;
+  width: 150rpx;
 	line-height: 60rpx;
 }
 
@@ -2496,21 +2497,21 @@ button.icon.lg {
 	overflow: hidden;
 }
 
-.cu-modal.bottom-modal::before {
-	vertical-align: bottom;
+.cu-modal.top-modal::before {
+	vertical-align: top;
 }
 
-.cu-modal.bottom-modal .cu-dialog {
-	width: 100%;
+.cu-modal.top-modal .cu-dialog {
+	width: 80%;
 	border-radius: 0;
 }
 
-.cu-modal.bottom-modal {
-	margin-bottom: -1000rpx;
+.cu-modal.top-modal {
+	margin-top: -1000rpx;
 }
 
-.cu-modal.bottom-modal.show {
-	margin-bottom: 0;
+.cu-modal.top-modal.show {
+	margin-top: 120rpx;
 }
 
 .cu-modal.drawer-modal {

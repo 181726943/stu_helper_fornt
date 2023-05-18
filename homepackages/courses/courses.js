@@ -1,5 +1,6 @@
 // homepackages/courses/courses.js
 const app = getApp();
+const config = require('../../config.js');
 Page({
 
   /**
@@ -59,7 +60,7 @@ Page({
   */
   tosearch(){
     wx.request({
-      url: 'http://127.0.0.1:8000/main/select/courseselect',
+      url: config.baseUrl + 'select/courseselect',
       method: 'GET',
       data: {
         school_year: this.data.year,
@@ -102,7 +103,7 @@ Page({
           // 第一步：同步后端
           app.getCsrfToken(token =>{
             wx.request({
-              url: 'http://127.0.0.1:8000/main/stuclass/' + pcs_id + '/',
+              url: config.baseUrl + 'stuclass/' + pcs_id + '/',
               method: "DELETE",
               header:{
                 "X-CSRFToken": token,
@@ -147,12 +148,12 @@ Page({
         if (res.confirm) {
           app.getCsrfToken(token => {
             wx.request({
-              url: 'http://127.0.0.1:8000/main/stuclass/',
+              url: config.baseUrl + 'stuclass/',
               method: "POST",
               header: {
                 "Authorization": wx.getStorageSync('userkey'),
                 "X-CSRFToken": token,
-                'content-type': 'application/x-www-form-urlencoded',
+                "content-type": 'application/x-www-form-urlencoded',
               },
               data: {
                 "student": app.globalData.userinfo.id,

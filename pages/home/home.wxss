@@ -3,7 +3,6 @@
 .home{
   height: 100%;
   width: 100%;
-  /* background: linear-gradient(-120deg, #9A5CE5, #01BEFF, #00F5D4, #43e97b); */
 }
 
 /* 顶部背景图 start */
@@ -42,35 +41,4 @@
   font-size: large;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-/* .grid-list{
-  z-index: 9999;
-  position: absolute;
-  top: 800rpx;
-  margin-top: 40rpx;
-  margin-left: 10rpx;
-  margin-right: 10rpx;
-  display: flex;
-  flex-wrap: wrap;
-}
-.grid-item{
-  width: 33.33%;
-  height: 200rpx;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-left: 1rpx solid #efefef;
-  border-top: 1rpx solid #efefef;
-  border-right: 1rpx solid #efefef;
-  border-bottom: 1rpx solid #efefef;
-  box-sizing: border-box;
-}
-.grid-item image{
-  width: 80rpx;
-  height: 80rpx;
-}
-.grid-item text{
-  font-size: 24rpx;
-  margin-top: 10rpx;
-} */
 

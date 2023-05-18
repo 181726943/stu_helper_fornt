@@ -29,7 +29,8 @@
       "root": "modifyinfo",
       "name": "modify",
       "pages": [
-        "information/information"
+        "information/information",
+        "repsetpwd/resetpwd"
       ]
     }
   ],
@@ -43,6 +44,7 @@
       "packages": ["modify"]
     }
   },
+  "requiredBackgroundModes": ["location"],
   "requiredPrivateInfos": [
     "getLocation",
     "onLocationChange",
@@ -51,7 +53,7 @@
   ],
   "permission": {
     "scope.userLocation": {
-      "desc": "阁下请留步"
+      "desc": "当前功能需要获取你的位置"
     }
   },
   "usingComponents": {},

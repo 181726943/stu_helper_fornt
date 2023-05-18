@@ -16,15 +16,15 @@
   </view>
   <view class="cu-form-group judtify-between">
     <view class="text cuIcon-title text-blue"></view>周数
-    <picker mode="selector" bindchange="weekChange"  value="{{weekIndex}}" range="{{weeekArray}}" range-key="weekname">
+    <picker mode="selector" bindchange="weekChange"  value="{{weekIndex}}" range="{{weekArray}}" range-key="weekname">
 			<view class="picker">
-				{{buildIndex ? buildArray[buildIndex].buildname : '请选择周数'}}
+				{{weekIndex ? weekArray[weekIndex].weekname : '请选择周数'}}
 			</view>
 		</picker>
     <view class="text cuIcon-title text-blue"></view>周次
     <picker mode="selector" bindchange="dayChange"  value="{{dayIndex}}" range="{{dayArray}}">
 			<view class="picker">
-				{{buildIndex ? buildArray[buildIndex].buildname : '请选择周次'}}
+				{{dayIndex ? dayArray[dayIndex] : '请选择周次'}}
 			</view>
 		</picker>
   </view>
