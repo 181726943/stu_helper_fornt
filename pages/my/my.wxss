@@ -143,7 +143,7 @@ animation: move_wave 4s linear infinite;
   opacity: 1;
   transform: scale(1, 1);
   background-size: 100% 100%;
-  background-image: url(http://192.168.137.1:8000/static/img/icon_bg.png);
+  background-image: url(http://127.0.0.1:8000/static/img/icon_bg.png);
 }
 /* 图标容器1 end */
 

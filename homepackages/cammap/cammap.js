@@ -17,19 +17,6 @@ Page({
   },
 
   /**
-   * 点击地图标记点
-   * @param {*} e 
-   */
-  makertap: function(e) {
-    var that = this;
-    var id = e.markerId;
-    // console.log(wxMarkerData);
-    // console.log(e);
-    // console.log(that.data.markers);
-    // that.showSearchInfo(wxMarkerData, id);
-  },
-
-  /**
    * 导航栏选择
    * @param {e} e 
    */
@@ -72,18 +59,6 @@ Page({
         iconPath: '/image/marker.png',
     });
   },
-  
-  // showSearchInfo: function(data, i){
-  //   console.log(data);
-  //   console.log(i);
-  //   var that = this;
-  //   that.setData({
-  //     placeData: {
-  //       address: '地址:' + data[i].address + '\n',
-  //       desc: '详情:' + data[i].desc + '\n',
-  //     }
-  //   });
-  // },
   
   /**
    * 生命周期函数--监听页面加载

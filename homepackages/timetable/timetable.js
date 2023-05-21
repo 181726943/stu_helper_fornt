@@ -22,7 +22,7 @@ Page({
     nowDay: 1, //今天周几
     nowDate: 1,  //今天日期
     bacimg: "https://tnuiimage.tnkjapp.com/swiper/banner-animate2.png",  //背景图
-    startDayList: ['2023-02-20', '2023-09-04', '2024-02-26'],  // 每个学期开学日期
+    startDayList: config.startDayList,  // 每个学期开学日期
     startDate: '2023-02-20',  // 当前学期开学日期,默认第一个日期
     // 课程列表
     courseList: [
@@ -182,25 +182,6 @@ Page({
   },
 
   /**
-   * 获取学年学期
-   */
-  getTermYear(){
-    let year = dayjs().year();
-    let month = dayjs().month() + 1;
-    if(month < 9){    //当前时间9月份以前，是year-1~year学年第二学期
-      year -= 1;
-      term = 2;
-    }
-    else {      //否则为year~year+1学年第一学期
-      term = 1;
-    }
-    this.setData({
-      year: year,
-      term: term,
-    });
-  },
-
-  /**
    * 获取今天星期几/日期
    * getDay()方法获取到的是数字
    * 0：星期日 1~6：星期一~星期六
@@ -224,8 +205,10 @@ Page({
 
   /**
    * 获取周数索引,也即当前周数
+   * 同时获取学年学期
    */
   getWeekIndex(){
+    let term = 0;
     let year = dayjs().year();  //当前年份
     let month = dayjs().month() + 1;  //当前月份
     let startdate = '';  //本学期开始日期
@@ -233,17 +216,17 @@ Page({
 
     if(year == 2023 && month < 9){
       startdate = this.data.startDayList[0];  //2022-2023第二学期
-      let term = 2;
+      term = 2;
     }
     else if (year == 2023 && month >= 9){
       startdate = this.data.startDayList[1];  //2023-2024第一学期
       year += 1;
-      let term = 1;
+      term = 1;
     }
     else {
       startdate = this.data.startDayList[2];  //2023-2024第二学期
       year += 1;
-      let term = 2;
+      term = 2;
     }
 
     let begindate = dayjs(startdate);
@@ -252,6 +235,8 @@ Page({
     let weekindex = Math.floor(diffDay / 7) + 1;  //当前周数
     weekindex = weekindex > 0 && weekindex < 20 ? weekindex : 19;  //限定周数范围
     this.setData({
+      term: term,
+      year: year,
       startDate: startdate,
       weekIndex: weekindex,
       currentWeek: weekindex,

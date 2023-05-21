@@ -60,7 +60,14 @@
         },
         {
           "name": "",
-          "pathName": "modifyinfo/repsetpwd/resetpwd",
+          "pathName": "modifyinfo/resetpwd/resetpwd",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "homepackages/examinfo/examinfo",
           "query": "",
           "launchMode": "default",
           "scene": null
@@ -68,5 +75,5 @@
       ]
     }
   },
-  "libVersion": "2.32.0"
+  "libVersion": "2.31.1"
 }

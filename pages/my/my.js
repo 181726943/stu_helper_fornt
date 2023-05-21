@@ -44,7 +44,7 @@ Page({
    */
   changePwd(){
     wx.navigateTo({
-      url: '/modifyinfo/changepwd/changepwd',
+      url: '/modifyinfo/resetpwd/resetpwd',
     });
     this.hideDrawer();
   },
@@ -69,19 +69,15 @@ Page({
         method: 'POST',
         header: {
           "X-CSRFToken": token,
+        },
+        success: ()=> {
+          app.globalData.userinfo = null;
+          wx.clearStorage();
+          wx.reLaunch({
+            url: '/pages/login/login?info=logout',
+          });
         }
       });
-    });
-    app.globalData.userinfo = null;
-    wx.clearStorage();
-    wx.showModal({
-      title: '注销/切换账号',
-      content: '当前帐号已退出登录,请重新登录',
-      showCancel: false,
-      confirmColor: "#8dc63f",
-    });
-    wx.reLaunch({
-      url: '/pages/login/login?info=logout',
     });
   },
 

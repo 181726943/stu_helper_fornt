@@ -22,11 +22,10 @@
   z-index: 1000;
   left: 0;
   right: 0;
-  top: 435rpx;
-  height: 150rpx;
-  margin-left: 20rpx;
-  margin-right: 20rpx;
-  background: linear-gradient(to right,#0026ff, #00ffc8, #761ced);
+  top: 400rpx;
+  height: 200rpx;
+  margin-left: 50rpx;
+  margin-right: 50rpx;
   border-radius: 20rpx;
 }
 .tc .tc-title{

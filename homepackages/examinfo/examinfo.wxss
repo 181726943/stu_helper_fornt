@@ -35,5 +35,5 @@
 }
 /* 搜索组 end */
 .gradelist{
-  margin-top: 80rpx;
+  margin-top: 200rpx;
 }

@@ -6,10 +6,10 @@
 <scroll-view scroll-x="false" class="cu-bar bg-white nav text-center fixed" style="top:{{CustomBar}}px">
   <view class="search-bar search-group">
     <picker class="dateselect" mode="date" start="{{grade}}-09-01" end="{{grade+4}}-06-30" bindchange="startChange" >
-      <view class="picker">{{todaydate}}</view>
+      <view class="picker">{{begindate}}</view>
     </picker>
     <picker mode="date" start="{{grade}}-09-01" end="{{grade+4}}-06-30" bindchange="endChange">
-      <view class="picker">{{todaydate}}</view>
+      <view class="picker">{{enddate}}</view>
     </picker>
     <button class="cu-btn round line-yellow shadow" bindtap="tosearch" style="width: auto;">查询</button>
   </view>

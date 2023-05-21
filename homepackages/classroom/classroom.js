@@ -17,14 +17,14 @@ Page({
       {weekname: '第七周', value: 7}, {weekname: '第八周', value: 8}, {weekname: '第九周', value: 9},
       {weekname: '第十周', value: 10}, {weekname: '第十一周', value: 11}, {weekname: '第十二周', value: 12},
       {weekname: '第十三周', value: 13}, {weekname: '第十四周', value: 14}, {weekname: '第十五周', value: 15},
-      {weekname: '第十六周', value: 16}, {weekname: '第十七周', value: 17}, {weekname: '第十八周', value: 18},
+      {weekname: '第十六周', value: 16}, {weekname: '第十七周', value: 17}, {weekname: '第十八周', value: 18}, {weekname: '第十九周', value: 19}
     ],
-    weekIndex: 0,
+    weekIndex: null,
     dayArray: [
-      '星期日', '星期一', '星期二', '星期三',
-      '星期四', '星期五', '星期六'
+      '星期一', '星期二', '星期三',
+      '星期四', '星期五', '星期六', '星期日'
     ],
-    dayIndex: 0,
+    dayIndex: null,
     classArray: [
       [1, 2, 3, 4, 5, 6, 7,
         8, 9, 10, 11, 12, 13, 14],
@@ -157,14 +157,14 @@ Page({
    * @param {*}  
    */
   toSearch(){
-    let year = this.data.year;
-    let term = this.data.term;
+    let year = this.data.year ? this.data.year : 2023;
+    let term = this.data.term ? this.data.term : 2;
     let begin = this.data.classArray[0][this.data.classIndex[0]];
     let end = this.data.classArray[1][this.data.classIndex[1]];
-    let weekday = this.data.dayIndex;
-    let weeks = this.data.weekArray[this.data.weekIndex].value;
-    let build = this.data.buildArray[this.data.buildIndex].value;
-    
+    let weekday = this.data.dayIndex ? this.data.dayIndex + 1 : 1;  // 这里用的是数组下标，要表示准确的周次需要加1
+    let weeks = this.data.weekIndex ? this.data.weekArray[this.data.weekIndex].value : this.data.weekArray[0].value;
+    let build = this.data.buildIndex ? this.data.buildArray[this.data.buildIndex].value : this.data.buildArray[0].value;
+    // console.log(year, term, weekday, weeks, build);
     // 查询请求
     wx.request({
       url: config.baseUrl + 'classroom/roomsearch/',
@@ -179,14 +179,18 @@ Page({
         build: build,
       },
       header: {
-        // "Authorization": wx.getStorageSync('userkey'),
-        "Authorization": 'Token 1dd176b8accf9f56aca4e209f3b40b2d99e03ecb'
+        "Authorization": wx.getStorageSync('userkey'),
       },
       success: res => {
-        console.log(res);
         if(res.statusCode == 200){
           this.setData({
             roomList: res.data,
+          });
+        }
+        else{
+          wx.showToast({
+            title: '出问题了',
+            icon: 'error',
           });
         }
       }

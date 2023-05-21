@@ -28,7 +28,7 @@
   border-radius: 12rpx;
   width: 45%;
   margin: 0 2.5% 40rpx;
-  background-image: url(http://192.168.137.1:8000/static/img/icon_bg6.png);
+  background-image: url(http://127.0.0.1:8000/static/img/icon_bg6.png);
   background-size: contain;
   background-position: center;
   position: relative;

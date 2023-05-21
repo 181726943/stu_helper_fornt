@@ -19,10 +19,10 @@
   </view>
 </scroll-view>
 <view class="gradelist padding bg-white">
-  <view class="flex" wx:for="{{examarr}}" wx:key="index">
-    <view class="basis-sm margin-xs padding-sm radius">{{item.cname}}</view>
-    <view class="basis-xs margin-xs padding-sm radius">{{item.addr}}</view>
-    <view class="basis-xs margin-xs padding-sm radius">{{item.exam_date}}</view>
-    <view class="basis-xs margin-xs padding-sm radius">{{item.exam_time}}</view>
+  <view class="flex" wx:for="{{examlist}}" wx:key="index">
+    <view class="flex-sub margin-xs padding-sm radius">{{item.cname}}</view>
+    <view class="flex-sub margin-xs padding-sm radius">{{item.exam_addr}}</view>
+    <view class="flex-sub margin-xs padding-sm radius">{{item.exam_date}}</view>
+    <view class="flex-sub margin-xs padding-sm radius">{{item.exam_time}}</view>
   </view>
 </view>

@@ -4,16 +4,16 @@
      <view class="dltext justify-center text-center">登录</view>
   
      <!-- 手机号 -->
-     <view class="phoneCs">
+     <view class="phoneCs align-center">
        <view class="flex tn-icon-phone text-white text-xxl margin-sm"></view>
-       <input class="userinput margin-tb-sm padding-tb-xs align-center text-df" placeholder="学号/工号" placeholder-style="color: #ffffff" bindblur="getusername"/>
+       <input class="pwdinput userinput align-center text-df" placeholder="学号/工号" placeholder-style="color: #ffffff" bindblur="getusername"></input>
      </view>
   
      <!-- 密码 -->
-     <view class="passwordCs">
+     <view class="passwordCs align-center">
        <!-- <image src="/image/password.png" class="ps"></image> -->
        <view class="tn-icon-lock text-white text-xxl margin-sm"></view>
-       <input class="margin-tb-sm padding-tb-xs text-df" password="{{ passwordType }}" placeholder="密码" placeholder-style="color: #ffffff" bindblur="getpassword"/>
+       <input class="align-center text-df" password="{{ passwordType }}" placeholder="密码" placeholder-style="color: #ffffff" bindblur="getpassword"></input>
        <view class="text-white align-center text-xxl tn-icon-{{showpwdType ? 'eye' : 'eye-hide'}} margin-tb-sm" bindtap='showorhide'></view>
      </view>
   
@@ -23,4 +23,20 @@
      </view>
   </view>
  </view>
+
+<!-- 显示提示信息的模态框 -->
+<view class="cu-modal {{showModal ? 'show' : ''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">Tips</view>
+    </view>
+    <view class="padding-xl text-lg">
+      {{message}}
+    </view>
+    <view class="cu-bar bg-white justify-between">
+      <button class="cu-btn basis-sm margin-left-sm bg-red" style="border-radius: 0;" bindtap="Cancle">取消</button>
+      <button class="cu-btn basis-sm margin-right-sm bg-green" style="border-radius: 0;" bindtap="Confirm">确定</button>
+    </view>
+  </view>
+</view>
   

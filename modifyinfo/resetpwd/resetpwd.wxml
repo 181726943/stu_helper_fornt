@@ -21,8 +21,8 @@
 		<view class="title">确认密码</view>
 		<input placeholder="请再次输入新密码" bindblur="ackPwd" password='true'></input>
   </view>
-  <view class="margin-top text-red" wx:if="{{warning == 'same'}}">
-    <text class="tn-icon-warning-fill padding-xs"></text>两次输入密码不一致
+  <view class="margin-top text-red" wx:if="{{warning}}">
+    <text class="tn-icon-warning-fill padding-xs"></text>{{warning == 'same' ? "两次输入密码不一致" : "新密码应至少包含8个字符"}}
   </view>
   <view class="flex justify-center margin-top-xl">
     <button class="cu-btn flex-sub justify-center lg bg-blue" bindtap="Confirm">确定</button>

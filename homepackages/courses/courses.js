@@ -1,6 +1,7 @@
 // homepackages/courses/courses.js
 const app = getApp();
 const config = require('../../config.js');
+const dayjs = require('dayjs');
 Page({
 
   /**
@@ -10,23 +11,45 @@ Page({
     CustomBar: app.globalData.CustomBar,   //导航栏下方固定栏
     courselist: [],
     selectArray: [],
-    selectIndex: [0,0],
+    selectIndex: [],
     // year: Object.assign({}, app.globalData.userinfo).grade,
-    year: "2019",
-    term: "1"
+    year: "",
+    term: ""
   },
+
+
+  /**
+   * 获取当前学年学期
+   */
+  getYearTerm(){
+    let year = dayjs().year();
+    let month = dayjs().month() + 1;
+    let term = 0;
+    if (month < 9){
+      year -= 1;
+      term = 2;
+    }
+    else{
+      term = 1;
+    }
+    this.setData({
+      year: year,
+      term: term,
+    })
+  },
+
 
   /**
    * 获得多列选择器中学年选择列表
   */
   getyearlist(){
     // 根据全局变量获得用户年级，用年级来生成选择列表
-    var year = Object.assign({}, app.globalData.userinfo).grade;
-    var temp = [];
-    var tempyear = [];
-    var tempterm = ['1', '2'];
-    for (var i = 0; i < 4; i++){
-      var newyear = year + "-" + (year + 1);
+    let year = Object.assign({}, app.globalData.userinfo).grade;
+    let temp = [];
+    let tempyear = [];
+    let tempterm = ['1', '2'];
+    for (let i = 0; i < 4; i++){
+      let newyear = year + "~" + (year + 1);
       tempyear.push(newyear);
       year += 1;
     }
@@ -41,9 +64,9 @@ Page({
    * 多列选择器处理函数
    */
   valueChange(e){
-    var tempyear = '';
-    var tempterm = '';
-    var index = e.detail.value;
+    let tempyear = '';
+    let tempterm = '';
+    let index = e.detail.value;
     tempyear = this.data.selectArray[0][index[0]].match(/\d+/)[0];
     tempterm = parseInt(this.data.selectArray[1][index[1]]);
     this.setData({
@@ -183,6 +206,7 @@ Page({
    */
   onLoad(options) {
     this.getyearlist();
+    this.getYearTerm();
   },
 
   /**

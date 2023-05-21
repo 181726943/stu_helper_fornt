@@ -30,7 +30,7 @@
       "name": "modify",
       "pages": [
         "information/information",
-        "repsetpwd/resetpwd"
+        "resetpwd/resetpwd"
       ]
     }
   ],

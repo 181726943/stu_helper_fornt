@@ -8,7 +8,12 @@
     <picker class="cu-item cu-form-group" mode="multiSelector" bindchange="valueChange" value="{{selectIndex}}"
     range="{{selectArray}}">
       <view class="picker">
-        {{selectArray[0][selectIndex[0]]}}-{{selectArray[1][selectIndex[1]]}}
+        <block wx:if="{{selectIndex.length > 0}}">
+          {{selectArray[0][selectIndex[0]]}}-{{selectArray[1][selectIndex[1]]}}
+        </block>
+        <block wx:else>
+          请选择学年学期
+        </block>
       </view>
     </picker>
     <button class="cu-btn round bg-olive shadow" bindtap="tosearch" style="width: auto;">查询</button>

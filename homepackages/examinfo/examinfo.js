@@ -30,6 +30,9 @@ Page({
     wx.request({
       url: config.baseUrl + 'exam/myexam',
       method: "GET",
+      header: {
+        "Authorization": wx.getStorageSync('userkey'),
+      },
       data: {
         cname: this.data.cname,
       },
@@ -37,7 +40,7 @@ Page({
         if(res.statusCode === 200){
           this.setData({
             examlist: res.data,
-          })
+          });
         }
         else{
           wx.showToast({

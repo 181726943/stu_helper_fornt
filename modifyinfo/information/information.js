@@ -39,7 +39,9 @@ Page({
     }
     // 电话
     else if(e.currentTarget.id == "phone"){
-      this.data.userInfo['phone'] = e.detail.value;
+      this.setData({
+        "userInfo.phone": e.detail.value,
+      })
     }
     // 本页变量 班级、宿舍、余额
     else{
@@ -74,19 +76,19 @@ Page({
         method: 'PUT',
         data: {
           "email": this.data.userInfo.email,
-          "phone": this.data.userInfo.value,
+          "phone": this.data.userInfo.phone,
         },
         header:{
-          'X-CSRFToken': token,
-          'key': wx.getStorageSync('userkey'),
-          'content-type': 'application/x-www-form-urlencoded',
+          "X-CSRFToken": token,
+          "Authorization": wx.getStorageSync('userkey'),
+          "content-type": 'application/x-www-form-urlencoded',
         },
         success: () => {
           wx.showToast({
             title: '修改成功',
             icon: 'success'
           })
-          wx.navigateBack();
+          // wx.navigateBack();
         }
       })
     });

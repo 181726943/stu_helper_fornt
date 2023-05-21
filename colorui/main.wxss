@@ -566,7 +566,7 @@ radio.white[checked] .wx-radio-input {
 }
 
 .solid-right::after {
-	border-right: 1rpx solid rgba(0, 0, 0, 0.1);
+	border-right: 1rpx solid rgba(0, 0, 0, 1);
 }
 
 .solid-bottom::after {
